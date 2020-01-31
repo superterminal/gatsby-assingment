@@ -14,7 +14,7 @@ export default ({ data }) => {
       {data.allWordpressPost.edges.map(({ node }) => (
         <div key={node.slug}>
             <Link to={node.slug}>
-              <p>{node.title}</p>
+              <p>Title: {node.title}</p>
             </Link>
             <div dangerouslySetInnerHTML={{ __html: node.excerpt}} />
         </div>
@@ -30,7 +30,7 @@ export const pageQuery = graphql`
         node {
           title
           excerpt
-          slug
+          slug 
         }
       }
     }

@@ -31,7 +31,7 @@ module.exports = {
       resolve: `gatsby-source-wordpress`,
       options: {
         // baseUrl: `live-gatbsyjswp.pantheonsite.io/`,
-        baseUrl: `https://gatsby-assingment.000webhostapp.com/`,
+        baseUrl: `https://gatsby-assingment.cloudaccess.host/`,
         protocol: `https`,
         hostingWPCOM: false,
         useACF: false

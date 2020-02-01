@@ -19,7 +19,7 @@ export default ({ data }) => {
                 <div dangerouslySetInnerHTML={{ __html: post.content }} />
                 <h2>Comments: </h2>
                 {comments.map(comment => (
-                    <div>
+                    <div key={comment.node.id}>
                         <span>By: {comment.node.author_name}, Date: {comment.node.date}</span> 
                         <div dangerouslySetInnerHTML={{ __html: comment.node.content}} />
                     </div>

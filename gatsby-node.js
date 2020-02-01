@@ -19,6 +19,7 @@ exports.createPages = ({ graphql, actions }) => {
                     excerpt
                     content
                     slug
+                    wordpress_id
                   }
                 }
             }
@@ -29,7 +30,8 @@ exports.createPages = ({ graphql, actions }) => {
                 path: node.slug,
                 component: path.resolve(`./src/templates/blog-post.js`),
                 context: {
-                    slug: node.slug
+                    slug: node.slug,
+                    postId: node.wordpress_id
                 },
             })
         })

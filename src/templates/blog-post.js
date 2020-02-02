@@ -4,6 +4,7 @@ import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 
 import Layout from '../components/layout';
+import dateSort from '../shared/dateSort';
 
 export default class Posts extends React.Component {
     constructor(props) {
@@ -23,14 +24,8 @@ export default class Posts extends React.Component {
     render() {
         const post = this.props.data.allWordpressPost.edges[0].node;
         let comments = this.props.data.allWordpressWpComments.edges;
-       
-        comments = comments.sort((a, b) => {
-            if (this.state.sortCommentsBy === 'ASC') {
-                return new Date(a.node.date) - new Date(b.node.date);
-            } else {
-                return new Date(b.node.date) - new Date(a.node.date);
-            }
-        });
+
+        comments = dateSort(comments, this.state.sortCommentsBy);
 
         return (
             <Layout>

@@ -10,10 +10,10 @@ export default ({ data }) => {
     <Layout>
       <SEO title="home" />
       <h1>Wordpress blog</h1>
-      <h4>Posts</h4>
+      <h4>Latest Posts</h4>
       {data.allWordpressPost.edges.map(({ node }) => (
         <div key={node.slug}>
-            <Link to={node.slug}>
+            <Link to={`/${node.slug}`}>
               <p>Title: {node.title}</p>
             </Link>
             <div dangerouslySetInnerHTML={{ __html: node.excerpt}} />
@@ -25,7 +25,7 @@ export default ({ data }) => {
 
 export const pageQuery = graphql`
   query {
-    allWordpressPost(sort: {fields: [date] }) {
+    allWordpressPost(sort: {fields: [date], order: DESC }) {
       edges {
         node {
           title

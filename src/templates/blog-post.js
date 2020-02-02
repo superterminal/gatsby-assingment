@@ -77,6 +77,7 @@ export const pageQuery = graphql`
                               src
                               width
                               height
+                              srcSet
                             }
                           }
                         }

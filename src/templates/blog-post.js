@@ -9,7 +9,7 @@ export default class Posts extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            sortCommentsBy: 'ASC'
+            sortCommentsBy: 'DESC'
         };
     }
 
@@ -22,8 +22,16 @@ export default class Posts extends React.Component {
 
     render() {
         const post = this.props.data.allWordpressPost.edges[0].node;
-        const comments = this.props.data.allWordpressWpComments.edges;
+        let comments = this.props.data.allWordpressWpComments.edges;
        
+        comments = comments.sort((a, b) => {
+            if (this.state.sortCommentsBy === 'ASC') {
+                return new Date(a.node.date) - new Date(b.node.date);
+            } else {
+                return new Date(b.node.date) - new Date(a.node.date);
+            }
+        });
+
         return (
             <Layout>
                 <div>
@@ -36,8 +44,8 @@ export default class Posts extends React.Component {
                     {comments.length !== 0 ? <div>
                             <h2>Comments: </h2>
                             <h3>Sort by: </h3><select onChange={this.sortChangeHandler}>
-                                    <option value="ASC">Ascending</option>
                                     <option value="DESC">Descending</option>
+                                    <option value="ASC">Ascending</option>
                             </select>
                             {comments.map(comment => (
                                 <div key={comment.node.id}>
@@ -93,4 +101,3 @@ export const pageQuery = graphql`
         }
     }
 `
-

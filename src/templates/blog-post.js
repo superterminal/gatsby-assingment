@@ -4,7 +4,7 @@ import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 
 import Layout from '../components/layout';
-import dateSort from '../shared/dateSort';
+import dateSort from '../shared/date-sort';
 
 export default class Posts extends React.Component {
     constructor(props) {
@@ -43,7 +43,7 @@ export default class Posts extends React.Component {
                                     <option value="ASC">Ascending</option>
                             </select>
                             {comments.map(comment => (
-                                <div key={comment.node.id}>
+                                <div key={comment.node.id} id={`comment-${comment.node.wordpress_id}`}>
                                     <span>By: {comment.node.author_name}, Date: {comment.node.date}</span>
                                     <hr/>
                                     <div dangerouslySetInnerHTML={{ __html: comment.node.content}} />
@@ -91,6 +91,7 @@ export const pageQuery = graphql`
                     id
                     content
                     author_name
+                    wordpress_id
                     date(formatString: "MMMM DD, YYYY, h:mm:ss a")
                 }
             }

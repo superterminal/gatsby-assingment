@@ -4,7 +4,7 @@ import { Link, graphql } from "gatsby";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 
-import dateSort from '../shared/dateSort';
+import dateSort from '../shared/date-sort';
 
 export default class Index extends React.Component {
   constructor(props) {

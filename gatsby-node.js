@@ -23,6 +23,16 @@ exports.createPages = ({ graphql, actions }) => {
                   }
                 }
             }
+            allWordpressCategory {
+                edges {
+                    node {
+                    id
+                    name
+                    count
+                    slug
+                  }
+              }
+            }
         }
     `).then(res => {
         res.data.allWordpressPost.edges.forEach(({ node }) => {
@@ -32,6 +42,15 @@ exports.createPages = ({ graphql, actions }) => {
                 context: {
                     slug: node.slug,
                     postId: node.wordpress_id
+                },
+            })
+        })
+        res.data.allWordpressCategory.edges.forEach(({ node }) => {
+            createPage({
+                path: `/category/${node.slug}`,
+                component: path.resolve(`./src/templates/category-filter.js`),
+                context: {
+                    categoryName: node.name
                 },
             })
         })

@@ -17,6 +17,7 @@ export default function RecentComments() {
             allWordpressPost {
                 edges {
                     node {
+                        id
                         title
                         wordpress_id
                         slug
@@ -36,7 +37,7 @@ export default function RecentComments() {
                 <div key={comment.node.id}>
                     <span>{comment.node.author_name} on {posts.map(el => {
                         if (comment.node.post === el.node.wordpress_id) {
-                            return <Link to={`/${el.node.slug}/#comment-${comment.node.wordpress_id}`}>{el.node.title}</Link>;
+                            return <Link to={`/${el.node.slug}/#comment-${comment.node.wordpress_id}`} key={el.node.id}>{el.node.title}</Link>;
                         }
                     })}</span><br />
                 </div>

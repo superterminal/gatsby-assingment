@@ -3,6 +3,7 @@ import React from "react"
 
 import RecentComments from './recent-comments';
 import RecentPosts from './recent-posts';
+import Categories from "./categories";
 
 const Footer = () => (
   <footer
@@ -32,6 +33,7 @@ const Footer = () => (
       </h3>
       <RecentComments />
       <RecentPosts />
+      <Categories />
     </div>
   </footer>
 )

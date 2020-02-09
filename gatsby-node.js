@@ -33,6 +33,15 @@ exports.createPages = ({ graphql, actions }) => {
                   }
               }
             }
+            allWordpressPage {
+                edges {
+                    node {
+                        id
+                        slug
+                        title
+                    }
+                }
+            }
         }
     `).then(res => {
         res.data.allWordpressPost.edges.forEach(({ node }) => {
@@ -44,7 +53,7 @@ exports.createPages = ({ graphql, actions }) => {
                     postId: node.wordpress_id
                 },
             })
-        })
+        });
         res.data.allWordpressCategory.edges.forEach(({ node }) => {
             createPage({
                 path: `/category/${node.slug}`,
@@ -53,6 +62,15 @@ exports.createPages = ({ graphql, actions }) => {
                     categoryName: node.name
                 },
             })
-        })
+        });
+        res.data.allWordpressPage.edges.forEach(({ node }) => {
+            createPage({
+                path: `/${node.slug}`,
+                component: path.resolve(`./src/templates/page.js`),
+                context: {
+                    slug: node.slug
+                },
+            })
+        });
     })
 }

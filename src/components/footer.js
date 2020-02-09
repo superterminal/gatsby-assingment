@@ -3,7 +3,8 @@ import React from "react"
 
 import RecentComments from './recent-comments';
 import RecentPosts from './recent-posts';
-import Categories from "./categories";
+import Categories from './categories';
+import Pages from './pages';
 
 const Footer = () => (
   <footer
@@ -16,7 +17,7 @@ const Footer = () => (
       style={{
         margin: `0 auto`,
         maxWidth: 960,
-        padding: `1.60rem 1.0875rem`,
+        padding: `2rem 1.0875rem`,
       }}
     >
       <h3 style={{ margin: 0 }}>
@@ -34,6 +35,7 @@ const Footer = () => (
       <RecentComments />
       <RecentPosts />
       <Categories />
+      <Pages />
     </div>
   </footer>
 )

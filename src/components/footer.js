@@ -2,6 +2,7 @@ import { Link } from "gatsby"
 import React from "react"
 
 import RecentComments from './recent-comments';
+import RecentPosts from './recent-posts';
 
 const Footer = () => (
   <footer
@@ -30,6 +31,7 @@ const Footer = () => (
         </Link> */}
       </h3>
       <RecentComments />
+      <RecentPosts />
     </div>
   </footer>
 )

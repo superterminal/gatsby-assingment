@@ -57,17 +57,19 @@ export default class Category extends React.Component {
     render() {
         return (
         <Layout>
+            {/* value={JSON.parse(localStorage.getItem('recentPostsTitle')).title} */}
+            {/* value={JSON.parse(localStorage.getItem('recentPostsNumber')).numberOfPosts} */}
             <SEO title="widgets" />
             <h1>Configure your widgets here</h1>
                 <div className="recent-comments">
                     <h2>Recent Comments: </h2>
                     <p>
                         <label htmlFor="widget-recent-posts">Title:</label>
-                        <input className="widefat" type="text" value={JSON.parse(localStorage.getItem('recentPostsTitle')).title} onChange={this.recentPostsTitleHandler}/>
+                        <input className="widefat" type="text" onChange={this.recentPostsTitleHandler}/>
                     </p>
                     <p>
                         <label htmlFor="widget-recent-posts">Number of posts to show:</label>
-                        <input className="tiny-text" type="number" value={JSON.parse(localStorage.getItem('recentPostsNumber')).numberOfPosts}step="1" min="1" size="3" onChange={this.recentPostsNumberHandler}/>
+                        <input className="tiny-text" type="number" step="1" min="1" size="3" onChange={this.recentPostsNumberHandler}/>
                     </p>
                     <p>
                         <input className="checkbox" type="checkbox" onClick={this.recentPostsDisplayDateHandler}/>

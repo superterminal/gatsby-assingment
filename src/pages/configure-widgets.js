@@ -33,8 +33,8 @@ export default class Category extends React.Component {
         this.setState({
             recentPosts: { ...this.state.recentPosts, title: value } 
         });
-        localStorage.removeItem('recentPostsTitle');
-        localStorage.setItem('recentPostsTitle', JSON.stringify({ title: value }));
+        sessionStorage.removeItem('recentPostsTitle');
+        sessionStorage.setItem('recentPostsTitle', JSON.stringify({ title: value }));
     }
 
     recentPostsNumberHandler = e => {
@@ -42,16 +42,16 @@ export default class Category extends React.Component {
         this.setState({
             recentPosts: { ...this.state.recentPosts, numberOfPosts: value } 
         });
-        localStorage.removeItem('recentPostsNumber');
-        localStorage.setItem('recentPostsNumber', JSON.stringify({ numberOfPosts: value }));
+        sessionStorage.removeItem('recentPostsNumber');
+        sessionStorage.setItem('recentPostsNumber', JSON.stringify({ numberOfPosts: value }));
     }
 
     recentPostsDisplayDateHandler = () => {
         this.setState({
             recentPosts: { ...this.state.recentPosts, displayPostDate: !this.state.recentPosts.displayPostDate } 
         });
-        localStorage.removeItem('recentPostsDisplayDate');
-        localStorage.setItem('recentPostsDisplayDate', JSON.stringify({ displayPostDate: !this.state.recentPosts.displayPostDate }));
+        sessionStorage.removeItem('recentPostsDisplayDate');
+        sessionStorage.setItem('recentPostsDisplayDate', JSON.stringify({ displayPostDate: !this.state.recentPosts.displayPostDate }));
     }
 
     render() {

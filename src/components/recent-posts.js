@@ -19,13 +19,8 @@ export default function RecentPosts() {
 
     let posts = data.allWordpressPost.edges;
 
-    let numberOfPosts = 5;
-    let isDisplayDate = false;
-
-    if (typeof window !== 'undefined') {
-        numberOfPosts = JSON.parse(localStorage.getItem('recentPostsNumber')).numberOfPosts;
-        isDisplayDate = JSON.parse(localStorage.getItem('recentPostsDisplayDate')).displayPostDate;
-    } 
+    const numberOfPosts = JSON.parse(sessionStorage.getItem('recentPostsNumber')).numberOfPosts;
+    const isDisplayDate = JSON.parse(sessionStorage.getItem('recentPostsDisplayDate')).displayPostDate;
     
     let postsAsText = [];
 
@@ -43,15 +38,11 @@ export default function RecentPosts() {
         }  
     }
 
-    let currentTitle = 'Recent Posts';
-    
-    if (typeof window !== 'undefined') {
-        currentTitle = JSON.parse(localStorage.getItem('recentPostsTitle')).title;
-    }
-    
+    let currentTitle = JSON.parse(sessionStorage.getItem('recentPostsTitle')).title;
+
     return (
         <React.Fragment>
-            <h2>{currentTitle}</h2> 
+            <h2>{currentTitle ? currentTitle : 'Recent Posts'}</h2> 
             {postsAsText.map(post => (
                 <div key={post.key}>
                     <Link to={`/${post.linkTo}/`}>{post.title}</Link>

@@ -43,11 +43,15 @@ export default function RecentPosts() {
         }  
     }
 
-    let currentTitle = JSON.parse(localStorage.getItem('recentPostsTitle')).title;
-
+    let currentTitle = 'Recent Posts';
+    
+    if (typeof window !== 'undefined') {
+        currentTitle = JSON.parse(localStorage.getItem('recentPostsTitle')).title;
+    }
+    
     return (
         <React.Fragment>
-            <h2>{currentTitle ? currentTitle : 'Recent Posts'}</h2> 
+            <h2>{currentTitle}</h2> 
             {postsAsText.map(post => (
                 <div key={post.key}>
                     <Link to={`/${post.linkTo}/`}>{post.title}</Link>

@@ -33,8 +33,6 @@ export default class Category extends React.Component {
         this.setState({
             recentPosts: { ...this.state.recentPosts, title: value } 
         });
-        sessionStorage.removeItem('recentPostsTitle');
-        sessionStorage.setItem('recentPostsTitle', JSON.stringify({ title: value }));
     }
 
     recentPostsNumberHandler = e => {
@@ -42,23 +40,17 @@ export default class Category extends React.Component {
         this.setState({
             recentPosts: { ...this.state.recentPosts, numberOfPosts: value } 
         });
-        sessionStorage.removeItem('recentPostsNumber');
-        sessionStorage.setItem('recentPostsNumber', JSON.stringify({ numberOfPosts: value }));
     }
 
     recentPostsDisplayDateHandler = () => {
         this.setState({
             recentPosts: { ...this.state.recentPosts, displayPostDate: !this.state.recentPosts.displayPostDate } 
         });
-        sessionStorage.removeItem('recentPostsDisplayDate');
-        sessionStorage.setItem('recentPostsDisplayDate', JSON.stringify({ displayPostDate: !this.state.recentPosts.displayPostDate }));
     }
 
     render() {
         return (
         <Layout>
-            {/* value={JSON.parse(localStorage.getItem('recentPostsTitle')).title} */}
-            {/* value={JSON.parse(localStorage.getItem('recentPostsNumber')).numberOfPosts} */}
             <SEO title="widgets" />
             <h1>Configure your widgets here</h1>
                 <div className="recent-comments">

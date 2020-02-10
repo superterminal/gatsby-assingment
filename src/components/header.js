@@ -16,7 +16,7 @@ const Header = ({ siteTitle }) => (
         padding: `1.45rem 1.0875rem`,
       }}
     >
-      <h1 style={{ margin: 0 }}>
+      <h1 style={{ margin: 0, textAlign: "left" }}>
         <Link
           to="/"
           style={{
@@ -27,6 +27,17 @@ const Header = ({ siteTitle }) => (
           {siteTitle}
         </Link>
       </h1>
+      <h3 style={{ margin: 0, textAlign: "right" }}>
+        <Link
+          to="/configure-widgets"
+          style={{
+            color: `white`,
+            textDecoration: `none`,
+          }}
+        >
+          Configure Widgets
+        </Link>
+      </h3>
     </div>
   </header>
 )

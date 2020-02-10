@@ -19,8 +19,13 @@ export default function RecentPosts() {
 
     let posts = data.allWordpressPost.edges;
 
-    const numberOfPosts = JSON.parse(localStorage.getItem('recentPostsNumber')).numberOfPosts;
-    const isDisplayDate = JSON.parse(localStorage.getItem('recentPostsDisplayDate')).displayPostDate;
+    let numberOfPosts = 5;
+    let isDisplayDate = false;
+
+    if (typeof window !== 'undefined') {
+        numberOfPosts = JSON.parse(localStorage.getItem('recentPostsNumber')).numberOfPosts;
+        isDisplayDate = JSON.parse(localStorage.getItem('recentPostsDisplayDate')).displayPostDate;
+    } 
     
     let postsAsText = [];
 
